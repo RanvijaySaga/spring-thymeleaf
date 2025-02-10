@@ -15,11 +15,11 @@ public class StudentService {
     private final StudentRepository studentRepository;
 
     /**
-     * Add student
+     * save student
      *
      * @param student the student
      */
-    public void addStudent(Student student) {
+    public void saveStudent(Student student) {
         studentRepository.save(student);
     }
 
