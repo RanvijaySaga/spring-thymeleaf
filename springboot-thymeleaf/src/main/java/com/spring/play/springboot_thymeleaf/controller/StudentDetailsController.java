@@ -4,12 +4,15 @@ import com.spring.play.springboot_thymeleaf.constants.ModelAtrributeName;
 import com.spring.play.springboot_thymeleaf.dto.Student;
 import com.spring.play.springboot_thymeleaf.service.StudentService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 
-@RestController
+@Controller
 @RequiredArgsConstructor
 public class StudentDetailsController {
     private final StudentService studentService;
@@ -35,7 +38,7 @@ public class StudentDetailsController {
      * @param model
      * @return
      */
-    @GetMapping("/addnew")
+    @GetMapping("/addNewStudent")
     public String addNewStudent(Model model) {
         Student student = new Student();
         model.addAttribute(ModelAtrributeName.STUDENT, student);
@@ -51,13 +54,13 @@ public class StudentDetailsController {
      */
 
     @PostMapping("/save")
-    public String saveStudent(@RequestBody Student student) {
+    public String saveStudent(Student student) {
         studentService.saveStudent(student);
         return "redirect:/";
     }
 
     // Get all students
-    @GetMapping("/students")
+    @GetMapping("/getAllStudents")
     public List<Student> getAllStudents() {
         return studentService.getAllStudents();
     }
@@ -82,7 +85,7 @@ public class StudentDetailsController {
     }
 
     // Delete student
-    @DeleteMapping("/students/{id}")
+    @GetMapping("/deleteStudent/{id}")
     public String deleteStudent(@PathVariable Long id) {
         studentService.deleteStudent(id);
         return "redirect:/";
