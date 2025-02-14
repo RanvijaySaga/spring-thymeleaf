@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
@@ -61,12 +62,14 @@ public class StudentDetailsController {
 
     // Get all students
     @GetMapping("/getAllStudents")
+    @ResponseBody
     public List<Student> getAllStudents() {
         return studentService.getAllStudents();
     }
 
     // Get student by id
     @GetMapping("/students/{id}")
+    @ResponseBody
     public Student getStudent(@PathVariable Long id) {
         return studentService.getStudent(id);
     }
