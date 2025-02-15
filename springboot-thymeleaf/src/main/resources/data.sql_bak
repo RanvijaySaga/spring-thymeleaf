@@ -1,6 +1,0 @@
-INSERT INTO STUDENT (ID, NAME, CLASS_NUMBER, SECTION) VALUES
-(1, 'John', 10, 'A'),
-(2, 'Doe', 11, 'B'),
-(3, 'Alex', 12, 'C'),
-(4, 'Sam', 9, 'D'),
-(5, 'Tom', 10, 'E');
